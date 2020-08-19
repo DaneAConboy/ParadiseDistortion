@@ -1,0 +1,13 @@
+[package]
+name = "ParadiseDistortion"
+version = "0.1.0"
+authors = ["DaneCantQuad"]
+edition = "2018"
+
+[dependencies]
+vst2 = "0.0.1"
+
+[lib]
+crate-type = ["dylib"]
+
+
