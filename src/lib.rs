@@ -39,7 +39,6 @@ impl Plugin for ParadiseDisortion {
 
 	fn set_parameter(&mut self, index: i32, value: f32) {
 		match index {
-			// We don't want to divide by zero, so we'll clamp the value
 			0 => self.threshold = value.max(0.01),
 			_ => (),
 		}
@@ -54,7 +53,6 @@ impl Plugin for ParadiseDisortion {
 
 	fn get_parameter_text(&self, index: i32) -> String {
 		match index {
-			// Convert to a percentage
 			0 => format!("{}", self.threshold * 100.0),
 			_ => "".to_string(),
 		}
@@ -67,10 +65,8 @@ impl Plugin for ParadiseDisortion {
 		}
 	}
 	fn process(&mut self, buffer: AudioBuffer<f32>) {
-		// Split out the input and output buffers into two vectors
 		let (inputs, outputs) = buffer.split();
 
-		// For each buffer, transform the samples
 		for (input_buffer, output_buffer) in inputs.iter().zip(outputs) {
 			for (input_sample, output_sample) in input_buffer.iter().zip(output_buffer) {
 
